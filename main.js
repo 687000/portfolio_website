@@ -15,6 +15,32 @@ const SVG = {
   pin:      `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
 };
 
+const svgAssets = {
+  github: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+  </svg>`,
+
+  linkedin: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+</svg>`,
+
+  email: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mailbox-flag" viewBox="0 0 16 16">
+  <path d="M10.5 8.5V3.707l.854-.853A.5.5 0 0 0 11.5 2.5v-2A.5.5 0 0 0 11 0H9.5a.5.5 0 0 0-.5.5v8zM5 7c0 .334-.164.264-.415.157C4.42 7.087 4.218 7 4 7s-.42.086-.585.157C3.164 7.264 3 7.334 3 7a1 1 0 0 1 2 0"/>
+  <path d="M4 3h4v1H6.646A4 4 0 0 1 8 7v6h7V7a3 3 0 0 0-3-3V3a4 4 0 0 1 4 4v6a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V7a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v6h6V7a3 3 0 0 0-3-3"/>
+</svg>`,
+
+  phone: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+  <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+  <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+</svg>`,
+
+  wechat: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wechat" viewBox="0 0 16 16">
+  <path d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018 0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411c0 1.21-.65 2.301-1.666 3.036a.32.32 0 0 0-.12.366l.218.81a.6.6 0 0 1 .029.117.166.166 0 0 1-.162.162.2.2 0 0 1-.092-.03l-1.057-.61a.5.5 0 0 0-.256-.074.5.5 0 0 0-.142.021 5.7 5.7 0 0 1-1.576.22M9.064 9.542a.647.647 0 1 0 .557-1 .645.645 0 0 0-.646.647.6.6 0 0 0 .09.353Zm3.232.001a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.63.63 0 0 0 .098.356"/>
+  <path d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.5.5 0 0 0-.032.14.19.19 0 0 0 .193.193q.06 0 .111-.029l1.268-.733a.6.6 0 0 1 .308-.088q.088 0 .171.025a6.8 6.8 0 0 0 1.625.26 4.5 4.5 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02l.15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826m4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0m3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0"/>
+</svg>`,
+
+};
+
 // ── RENDERERS ─────────────────────────────────────────────────
 const RENDERERS = {};
 
@@ -25,15 +51,17 @@ RENDERERS.nav = function (cfg) {
   const mobileLinks = links.map(l => `<a href="${l.href}" class="nav__mobile-link">${l.label}</a>`).join('');
   return `
     <nav class="nav" id="nav">
-      <div class="nav__inner">
-        <a href="#" class="nav__logo-mark">${initials}</a>
-        <div class="nav__links">${navLinks}</div>
-        <div class="nav__actions">
-          <a href="${cta.href}" class="nav__cta">${cta.label}</a>
+      <div class="nav__outer">
+        <div class="nav__inner">
+          <a href="#" class="nav__logo-mark">${initials}</a>
+          <div class="nav__links">${navLinks}</div>
+          <div class="nav__actions">
+            <a href="${cta.href}" class="nav__cta">${cta.label}</a>
+          </div>
+          <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
         </div>
-        <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </nav>
     <div class="nav__mobile-menu" id="nav-mobile" role="navigation">
@@ -46,20 +74,27 @@ RENDERERS.nav = function (cfg) {
 
 // ── HERO ──────────────────────────────────────────────────────
 RENDERERS.hero = function (cfg) {
-  const { greeting, name, title, tagline, ctas, social, photo } = cfg.hero;
+  const { greeting, name, title, tagline, ctas, social, photo, heroImage } = cfg.hero;
 
   const ctaBtns = ctas.map(c =>
     `<a href="${c.href}" class="btn btn--${c.style === 'primary' ? 'primary' : 'outline-inv'}">${c.label}</a>`
   ).join('');
 
-  const socialLinks = social.map(s => `
-    <a href="${s.href}" class="hero__social-link">
-      <i class="hero__social-icon">${s.icon}</i>${s.label}
-    </a>`).join('');
+  // Icon-only pills — show all links including phone
+  const socialLinks = social.map(s =>
+    `<a href="${s.href}" class="hero__social-link" title="${s.label}" aria-label="${s.label}">
+      <i class="hero__social-icon">${svgAssets[s.icon]}</i>
+    </a>`
+  ).join('');
 
   const avatar = photo
     ? `<img src="${photo}" alt="${name}" class="hero__photo" loading="eager">`
-    : `<div class="hero__avatar-placeholder">${cfg.nav.initials}</div>`;
+    : heroImage
+      ? `<div class="hero__visual-card">
+           <img src="${heroImage}" alt="" class="hero__card-img" aria-hidden="true" loading="eager">
+           <div class="hero__card-overlay"></div>
+         </div>`
+      : `<div class="hero__avatar-placeholder">${cfg.nav.initials}</div>`;
 
   return `
     <section id="section-hero" class="section section--hero">
@@ -67,17 +102,116 @@ RENDERERS.hero = function (cfg) {
       <div class="hero__glow-2"></div>
       <div class="hero__inner">
         <div class="hero__content">
-          <p  class="hero__greeting hero-in" style="--delay:.05s">${greeting}</p>
-          <h1 class="hero__name    hero-in" style="--delay:.12s">${name}</h1>
-          <p  class="hero__title   hero-in" style="--delay:.20s">${title}</p>
-          <p  class="hero__tagline hero-in" style="--delay:.28s">${tagline}</p>
-          <div class="hero__ctas   hero-in" style="--delay:.36s">${ctaBtns}</div>
-          <div class="hero__social hero-in" style="--delay:.44s">${socialLinks}</div>
+          <p  class="hero__greeting hero-in" style="--delay:.02s">${greeting}</p>
+          <h1 class="hero__name    hero-in" style="--delay:.08s">${name}</h1>
+          <p  class="hero__title   hero-in" style="--delay:.15s">${title}</p>
+          <p  class="hero__tagline hero-in" style="--delay:.22s">${tagline}</p>
+          <div class="hero__ctas   hero-in" style="--delay:.30s">${ctaBtns}</div>
+          <div class="hero__social hero-in" style="--delay:.38s">${socialLinks}</div>
         </div>
-        <div class="hero-in" style="--delay:.22s">${avatar}</div>
+        <div class="hero-in" style="--delay:.18s">${avatar}</div>
       </div>
       <div class="hero__scroll" aria-hidden="true">
         <span>scroll</span><div class="hero__scroll-arrow"></div>
+      </div>
+    </section>`;
+};
+
+// ── EXPERIENCE ────────────────────────────────────────────────
+RENDERERS.experience = function (cfg) {
+  const { sectionLabel, heading, items } = cfg.experience;
+
+  const cards = items.map((item, i) => {
+    const bullets = item.bullets.map(b => `<li class="exp-card__bullet">${b}</li>`).join('');
+    return `
+      <article class="exp-card" style="--i:${i}">
+        <div class="exp-card__top">
+          <div>
+            <div class="exp-card__company">${item.company}</div>
+            <div class="exp-card__role">${item.role}</div>
+          </div>
+          <div class="exp-card__meta">
+            <span class="exp-card__period">${item.period}</span>
+            <span class="exp-card__type exp-card__type--${item.type.toLowerCase().replace(/\s+/g,'-')}">${item.type}</span>
+          </div>
+        </div>
+        <div class="exp-card__location">${SVG.pin} ${item.location}</div>
+        <ul class="exp-card__bullets">${bullets}</ul>
+      </article>`;
+  }).join('');
+
+  return `
+    <section id="section-experience" class="section section--experience">
+      <div class="container">
+        <div class="experience__header ${anim()}">
+          <span class="section-label label--dim">${sectionLabel}</span>
+          <h2 class="section-heading" style="margin-top:6px">${heading}</h2>
+        </div>
+        <div class="experience__list" id="exp-list">${cards}</div>
+      </div>
+    </section>`;
+};
+
+// ── SKILLS ────────────────────────────────────────────────────
+RENDERERS.skills = function (cfg) {
+  const { sectionLabel, heading, categories } = cfg.skills;
+
+  const cats = categories.map((cat, i) => {
+    const chips = cat.items.map(item => `<span class="skill-chip">${item}</span>`).join('');
+    return `
+      <div class="skill-category glass-soft ${anim('anim', 0.08 * i)}">
+        <div class="skill-category__header">
+          <span class="skill-category__dot" style="background:${cat.color}"></span>
+          <span class="skill-category__name">${cat.name}</span>
+        </div>
+        <div class="skill-chips">${chips}</div>
+      </div>`;
+  }).join('');
+
+  return `
+    <section id="section-skills" class="section section--skills">
+      <div class="container">
+        <div class="skills__header ${anim()}">
+          <span class="section-label label--dim">${sectionLabel}</span>
+          <h2 class="section-heading" style="margin-top:6px">${heading}</h2>
+        </div>
+        <div class="skills__grid">${cats}</div>
+      </div>
+    </section>`;
+};
+
+// ── ABOUT ─────────────────────────────────────────────────────
+RENDERERS.about = function (cfg) {
+  const { sectionLabel, heading, bio, timeline } = cfg.about;
+  const paras = bio.map(p => `<p>${p}</p>`).join('');
+
+  const tlItems = timeline.map((item, i) => `
+    <div class="about-tl-item" style="--i:${i}">
+      <div class="about-tl-dot"></div>
+      <div class="about-tl-card">
+        <div class="about-tl-card__top">
+          <span class="about-tl-card__org">${item.org}</span>
+          <span class="about-tl-badge about-tl-badge--${item.type.toLowerCase()}">${item.type}</span>
+        </div>
+        <div class="about-tl-card__detail">${item.detail}</div>
+        <div class="about-tl-card__period">${item.period} · ${item.location}</div>
+      </div>
+    </div>`).join('');
+
+  return `
+    <section id="section-about" class="section section--about">
+      <div class="container">
+        <div class="about__grid">
+          <div class="${anim('anim-left')}">
+            <span class="section-label label--dim">${sectionLabel}</span>
+            <h2 class="section-heading about__bio-heading" style="margin-top:6px">${heading}</h2>
+            <div class="about__bio">${paras}</div>
+          </div>
+          <div class="${anim('anim-right', 0.14)}">
+            <div class="about__edu-heading">Background</div>
+            <div class="about-timeline">${tlItems}</div>
+          </div>
+        </div>
       </div>
     </section>`;
 };
@@ -124,131 +258,45 @@ RENDERERS.projects = function (cfg) {
       <div class="container">
         <div class="projects__header ${anim()}">
           <span class="section-label label--inv">${sectionLabel}</span>
-          <h2 class="section-heading" style="color:#fff;margin-top:6px">${heading}</h2>
+          <h2 class="section-heading">${heading}</h2>
         </div>
         <div class="projects__grid" id="projects-grid">${cards}</div>
       </div>
     </section>`;
 };
 
-// ── EXPERIENCE ────────────────────────────────────────────────
-RENDERERS.experience = function (cfg) {
-  const { sectionLabel, heading, items } = cfg.experience;
-
-  const cards = items.map((item, i) => {
-    const bullets = item.bullets.map(b => `<li class="exp-card__bullet">${b}</li>`).join('');
-    return `
-      <article class="exp-card" style="--i:${i}">
-        <div class="exp-card__top">
-          <div>
-            <div class="exp-card__company">${item.company}</div>
-            <div class="exp-card__role">${item.role}</div>
-          </div>
-          <div class="exp-card__meta">
-            <span class="exp-card__period">${item.period}</span>
-            <span class="exp-card__type">${item.type}</span>
-          </div>
-        </div>
-        <div class="exp-card__location">${SVG.pin} ${item.location}</div>
-        <ul class="exp-card__bullets">${bullets}</ul>
-      </article>`;
-  }).join('');
-
-  return `
-    <section id="section-experience" class="section section--experience">
-      <div class="container">
-        <div class="experience__header ${anim()}">
-          <span class="section-label label--dim">${sectionLabel}</span>
-          <h2 class="section-heading" style="margin-top:6px">${heading}</h2>
-        </div>
-        <div class="experience__list" id="exp-list">${cards}</div>
-      </div>
-    </section>`;
-};
-
-// ── SKILLS ────────────────────────────────────────────────────
-RENDERERS.skills = function (cfg) {
-  const { sectionLabel, heading, categories } = cfg.skills;
-
-  const cats = categories.map((cat, i) => {
-    const chips = cat.items.map(item => `<span class="skill-chip">${item}</span>`).join('');
-    return `
-      <div class="skill-category ${anim('anim', 0.08 * i)}">
-        <div class="skill-category__header">
-          <span class="skill-category__dot" style="background:${cat.color}"></span>
-          <span class="skill-category__name">${cat.name}</span>
-        </div>
-        <div class="skill-chips">${chips}</div>
-      </div>`;
-  }).join('');
-
-  return `
-    <section id="section-skills" class="section section--skills">
-      <div class="container">
-        <div class="skills__header ${anim()}">
-          <span class="section-label label--dim">${sectionLabel}</span>
-          <h2 class="section-heading" style="margin-top:6px">${heading}</h2>
-        </div>
-        <div class="skills__grid">${cats}</div>
-      </div>
-    </section>`;
-};
-
-// ── ABOUT ─────────────────────────────────────────────────────
-RENDERERS.about = function (cfg) {
-  const { sectionLabel, heading, bio, education } = cfg.about;
-  const paras   = bio.map(p => `<p>${p}</p>`).join('');
-  const eduItems = education.map(e => `
-    <div class="edu-item">
-      <div class="edu-item__school">${e.school}</div>
-      <div class="edu-item__degree">${e.degree}</div>
-      <div class="edu-item__period">${e.period} · ${e.location}</div>
-    </div>`).join('');
-
-  return `
-    <section id="section-about" class="section section--about">
-      <div class="container">
-        <div class="about__grid">
-          <div class="${anim('anim-left')}">
-            <span class="section-label label--dim">${sectionLabel}</span>
-            <h2 class="section-heading about__bio-heading" style="margin-top:6px">${heading}</h2>
-            <div class="about__bio">${paras}</div>
-          </div>
-          <div class="${anim('anim-right', 0.14)}">
-            <div class="about__edu-heading">Education</div>
-            <div class="about__edu-list">${eduItems}</div>
-          </div>
-        </div>
-      </div>
-    </section>`;
-};
-
 // ── CONTACT ───────────────────────────────────────────────────
 RENDERERS.contact = function (cfg) {
-  const { sectionLabel, heading, body, links } = cfg.contact;
+  const { heading, body, links, bgImage } = cfg.contact;
+
   const contactLinks = links.map(l => `
-    <a href="${l.href}" class="contact__link contact__link--${l.primary ? 'primary' : 'secondary'}">
-      <i class="contact__link-icon">${l.icon}</i>${l.label}
-    </a>`).join('');
+    <a href="${l.href}" target="_blank" class="contact__link contact__link--${l.primary ? 'primary' : 'secondary'}">
+      <i class="contact__link-icon">${svgAssets[l.icon]}</i>${l.label}
+    </a>
+  `).join('');
 
   return `
-    <section id="section-contact" class="section section--contact">
+    <section
+      id="section-contact"
+      class="section section--contact"
+      style="background-image: linear-gradient(rgba(80, 140, 145, 0.38), rgba(80, 140, 145, 0.38)), url('${bgImage}')"
+    >
       <div class="contact__inner">
-        <div class="contact__glass ${anim()}">
-          <span class="section-label label--inv">${sectionLabel}</span>
+        <div class="contact__glass glass-soft ${anim()}">
           <h2 class="contact__heading">${heading}</h2>
-          <p  class="contact__body">${body}</p>
+          <p class="contact__body">${body}</p>
           <div class="contact__links">${contactLinks}</div>
         </div>
       </div>
-    </section>`;
+    </section>
+  `;
 };
 
 // ── FOOTER ────────────────────────────────────────────────────
 RENDERERS.footer = function (cfg) {
   const { name, links, social, copyright } = cfg.footer;
-  const footLinks = links.map(l => `<a href="${l.href}" class="footer__link">${l.label}</a>`).join('');
-  const socLinks  = social.map(l => `<a href="${l.href}" class="footer__social-link">${l.label}</a>`).join('');
+  const footLinks = links.map(l => `<a href="${l.href}" target="_blank" class="footer__link">${l.label}</a>`).join('');
+  const socLinks  = social.map(l => `<a href="${l.href}" target="_blank" class="footer__social-link">${l.label}</a>`).join('');
   return `
     <footer class="footer">
       <div class="footer__inner">

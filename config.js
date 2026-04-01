@@ -3,7 +3,6 @@
 // ============================================================
 
 const CONFIG = {
-
   // ----------------------------------------------------------
   // SITE META
   // ----------------------------------------------------------
@@ -20,7 +19,6 @@ const CONFIG = {
     name:     'Jiani Liu',
     links: [
       { label: 'Experience', href: '#section-experience' },
-      { label: 'Education', href: '#section-education' },
       { label: 'Projects', href: '#section-projects'   },
       { label: 'Skills',   href: '#section-skills'     },
       { label: 'About',    href: '#section-about'      },
@@ -36,18 +34,20 @@ const CONFIG = {
     name:     'Jiani Liu',
     title:    'Web Developer',
     location: 'San Jose, CA',
-    tagline:  'I build complex, production-grade web interfaces — the kind that coordinate workflows, real-time state, and user experiences at scale.',
+    tagline:  'I build complex, production-grade web applications, coordinating workflows, automations, and user experiences at scale.',
     ctas: [
       { label: 'Experiences', href: '#section-experience', style: 'primary'  },
-      { label: 'Resume ↓',      href: '#',                 style: 'outline', download: true },
+      { label: 'Resume ↓',    href: 'http://www.liujiani.net/assets/Jiani_Liu_Web_Developer.pdf', style: 'outline', download: true },
     ],
     social: [
-      { label: 'jianiliu33@gmail.com', href: 'mailto:jianiliu33@gmail.com', icon: '✉' },
-      { label: 'LinkedIn',             href: 'https://www.linkedin.com/in/jiani-liu-547662192/', icon: 'in' },
-      { label: 'GitHub',               href: 'https://github.com/687000',                     icon: 'gh' },
-      { label: '(408) 515-2977',       href: 'tel:4085152977',               icon: '☎' },
+      { label: 'Email', href: 'mailto:jianiliu33@gmail.com', icon: 'email' },
+      { label: 'LinkedIn',             href: 'https://www.linkedin.com/in/jiani-liu-547662192/', icon: 'linkedin' },
+      { label: 'GitHub',               href: 'https://github.com/687000',                     icon: 'github' },
+      { label: 'Phone',       href: 'tel:4085152977',               icon: 'phone' },
+      { label: 'WeChat',       href: '#',               icon: 'wechat' },
     ],
     photo: '',
+    heroImage: 'http://www.liujiani.net/assets/images/waves.png',
   },
 
   // ----------------------------------------------------------
@@ -57,21 +57,37 @@ const CONFIG = {
     sectionLabel: 'About',
     heading:      'Bridging design thinking and engineering precision.',
     bio: [
-      "I'm a web developer with experience building complex web applications, workflow-driven systems, and reusable UI systems. Strong background in Vue/TypeScript product development, technical design translation, debugging, and cross-functional collaboration across engineering, product, design, and QA.",
+      "I'm a 2 years experience web developer with experience building complex web applications, workflow-driven systems, and reusable UI systems. Strong background in Vue/TypeScript product development, technical design translation, debugging, and cross-functional collaboration across engineering, product, design, and QA.",
       "I studied Interaction & UI/UX Design at Academy of Art and Mathematics of Computation at UCLA. That combination — analytical rigor paired with visual craft — shapes how I approach every interface problem.",
     ],
-    education: [
+    timeline: [
       {
-        school:   'Academy of Art University',
-        degree:   'M.A., Interaction & UI/UX Design',
-        period:   'Sep 2021 - May 2023',
-        location: 'San Francisco, CA',
+        org:      'UCLA',
+        detail:   'B.S., Mathematics of Computation',
+        period:   'Sep 2017 – Jun 2021',
+        location: 'Los Angeles, CA',
+        type:     'Education',
       },
       {
-        school:   'UCLA',
-        degree:   'B.S., Mathematics of Computation',
-        period:   'Sep 2017 - Jun 2021',
-        location: 'Los Angeles, CA',
+        org:      'Academy of Art University',
+        detail:   'M.A., Interaction & UI/UX Design',
+        period:   'Sep 2021 – May 2023',
+        location: 'San Francisco, CA',
+        type:     'Education',
+      },
+      {
+        org:      'Bright Mind Enrichment & Schooling',
+        detail:   'Volunteer Web Dev Team Lead',
+        period:   'Jul 2023 – Mar 2024',
+        location: 'Remote',
+        type:     'Volunteer',
+      },
+      {
+        org:      'Moxo',
+        detail:   'Web Developer',
+        period:   'Apr 2024 – Present',
+        location: 'San Jose, CA',
+        type:     'Full-time',
       },
     ],
   },
@@ -204,14 +220,15 @@ const CONFIG = {
   // ----------------------------------------------------------
   contact: {
     sectionLabel: 'Contact',
-    heading:      "Let's build something.",
-    body:         "I'm open to full-time roles, contract work, and conversations about frontend craft. Reach out — I respond quickly.",
+    heading:      "Contact Me",
+    body:         "Open to full-time roles. Feel free to reach out for collaborations, questions, or just to say hi!",
     links: [
-      { label: 'jianiliu33@gmail.com', href: 'mailto:jianiliu33@gmail.com', icon: '✉',  primary: true  },
-      { label: 'LinkedIn',             href: 'https://www.linkedin.com/in/jiani-liu-547662192/', icon: 'in', primary: false },
-      { label: 'GitHub',               href: 'https://github.com/687000',     icon: '</>', primary: false },
-      { label: '(408) 515-2977',       href: 'tel:4085152977',               icon: '☎',  primary: false },
+      { label: 'Email', href: 'mailto:jianiliu33@gmail.com', icon: 'email',  primary: true  },
+      { label: 'LinkedIn',             href: 'https://www.linkedin.com/in/jiani-liu-547662192/', icon: 'linkedin', primary: false },
+      { label: 'GitHub',               href: 'https://github.com/687000',     icon: 'github', primary: false },
+      { label: 'Phone',       href: 'tel:4085152977',               icon: 'phone',  primary: false },
     ],
+    bgImage: 'http://www.liujiani.net/assets/images/fernando-garcia-zuPXH2Nrzpg-unsplash.jpg',
   },
 
   // ----------------------------------------------------------
@@ -220,7 +237,7 @@ const CONFIG = {
   footer: {
     name: 'Jiani Liu',
     links: [
-      { label: 'Work',     href: '#section-experience' },
+      { label: 'Experience', href: '#section-experience' },
       { label: 'Projects', href: '#section-projects'   },
       { label: 'Skills',   href: '#section-skills'     },
       { label: 'About',    href: '#section-about'      },
@@ -230,7 +247,7 @@ const CONFIG = {
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jiani-liu-547662192/' },
       { label: 'GitHub',   href: 'https://github.com/687000' },
     ],
-    copyright: '© 2026 Jiani Liu. Designed & built from scratch.',
+    copyright: '© 2026 Jiani Liu.',
   },
 
 };
@@ -240,9 +257,9 @@ const CONFIG = {
 // ============================================================
 const SECTION_ORDER = [
   'hero',
-  'projects',
+  'about',
   'experience',
   'skills',
-  'about',
+  'projects',
   'contact',
 ];
