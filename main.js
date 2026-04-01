@@ -82,7 +82,7 @@ RENDERERS.hero = function (cfg) {
 
   // Icon-only pills — show all links including phone
   const socialLinks = social.map(s =>
-    `<a href="${s.href}" class="hero__social-link" title="${s.label}" aria-label="${s.label}">
+    `<a href="${s.href}" class="hero__social-link" target="_blank" title="${s.label}" aria-label="${s.label}">
       <i class="hero__social-icon">${svgAssets[s.icon]}</i>
     </a>`
   ).join('');
@@ -236,6 +236,10 @@ RENDERERS.projects = function (cfg) {
     const codeLink = item.links.code && item.links.code !== '#'
       ? `<a href="${item.links.code}" target="_blank" rel="noopener" class="project-link project-link--code">${SVG.github} Code</a>`
       : `<span class="project-link project-link--code" style="opacity:.35;pointer-events:none">${SVG.github} Code TBD</span>`;
+
+    const detailLink = item.links.detail && item.detail.code !== '#'
+      ? `<a href="${item.links.detail}" target="_blank" rel="noopener" class="project-link project-link--code">Detail</a>`
+      : `<span class="project-link project-link--code" style="opacity:.35;pointer-events:none">Detail TBD</span>`;
 
     // --i drives the CSS stagger delay
     return `

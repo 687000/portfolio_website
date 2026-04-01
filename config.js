@@ -37,14 +37,13 @@ const CONFIG = {
     tagline:  'I build complex, production-grade web applications, coordinating workflows, automations, and user experiences at scale.',
     ctas: [
       { label: 'Experiences', href: '#section-experience', style: 'primary'  },
-      { label: 'Resume ↓',    href: 'http://www.liujiani.net/assets/Jiani_Liu_Web_Developer.pdf', style: 'outline', download: true },
+      { label: 'Resume ↓',    href: 'http://www.liujiani.net/assets/Jiani_Liu_Web_Dev.pdf', style: 'outline', download: true },
     ],
     social: [
       { label: 'Email', href: 'mailto:jianiliu33@gmail.com', icon: 'email' },
       { label: 'LinkedIn',             href: 'https://www.linkedin.com/in/jiani-liu-547662192/', icon: 'linkedin' },
       { label: 'GitHub',               href: 'https://github.com/687000',                     icon: 'github' },
       { label: 'Phone',       href: 'tel:4085152977',               icon: 'phone' },
-      { label: 'WeChat',       href: '#',               icon: 'wechat' },
     ],
     photo: '',
     heroImage: 'http://www.liujiani.net/assets/images/waves.png',
@@ -100,47 +99,51 @@ const CONFIG = {
     heading:      'Projects',
     items: [
       {
-        name:         'Non-profit Website Revamp',
-        detail:       'Full redesign and development of a non-profit organization website. Rebuilt the information architecture, migrated to a custom WordPress theme, and established a contributor system that allowed 50+ volunteers to maintain content without breaking the design system.',
-        thumbnailUrl: '', // PLACEHOLDER — replace with screenshot image URL
-        thumbnailBg:  'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
-        tags:         ['WordPress', 'PHP', 'Figma'],
-        links: {
-          demo: '#', // PLACEHOLDER — add live site URL
-          code: '#', // PLACEHOLDER — add GitHub repo URL
-        },
-      },
-      {
         name:         'Jira Workflow Tool',
         detail:       'A workflow management application that streamlines task coordination across distributed teams. Built with React and Ant Design, it maps Jira issue states to a visual workflow canvas with drag-and-drop assignment and real-time status updates.',
-        thumbnailUrl: '', // PLACEHOLDER — replace with screenshot image URL
+        thumbnailUrl: 'http://www.liujiani.net/personal_website/wp-content/uploads/2023/04/react-jira-e1682181050148.png',
         thumbnailBg:  'linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%)',
         tags:         ['React', 'Ant Design', 'Figma'],
         links: {
-          demo: '#', // PLACEHOLDER — add live demo URL
-          code: '#', // PLACEHOLDER — add GitHub repo URL
+          demo: 'https://687000.github.io',
+          code: 'https://github.com/687000/React_Jira_Project',
+          detail: '#'
         },
       },
       {
         name:         'WordPress Custom Theme',
         detail:       'A fully custom WordPress theme built from scratch with PHP templates, custom post types, Advanced Custom Fields, and a reusable component system. Designed and shipped a design token layer that kept visual consistency across 40+ page templates.',
-        thumbnailUrl: '', // PLACEHOLDER — replace with screenshot image URL
+        thumbnailUrl: 'http://www.liujiani.net/personal_website/wp-content/uploads/2023/05/Screenshot-2023-05-05-at-11.17.13-AM.png', // PLACEHOLDER — replace with screenshot image URL
         thumbnailBg:  'linear-gradient(135deg, #10b981 0%, #047857 100%)',
         tags:         ['WordPress', 'PHP', 'CSS'],
         links: {
+          demo: 'http://www.liujiani.net/dessert-delights/',
+          code: 'https://github.com/687000/dessert_delights_wordpress_theme',
+          detail: '#'
+        },
+      },
+      {
+        name:         'Non-profit Website Rebranding',
+        detail:       'Full redesign and development of a non-profit organization website. Rebuilt the information architecture, migrated to a custom WordPress theme, and established a contributor system that allowed 50+ volunteers to maintain content without breaking the design system.',
+        thumbnailUrl: 'http://www.liujiani.net/personal_website/wp-content/uploads/2024/01/Screenshot-2024-01-17-at-4.56.24%E2%80%AFPM.png', // PLACEHOLDER — replace with screenshot image URL
+        thumbnailBg:  'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
+        tags:         ['WordPress', 'PHP', 'Figma'],
+        links: {
           demo: '#', // PLACEHOLDER — add live site URL
           code: '#', // PLACEHOLDER — add GitHub repo URL
+          detail: '#'
         },
       },
       {
         name:         'WebGL Games',
         detail:       'A collection of interactive browser-based games built with WebGL and vanilla JavaScript. Explored real-time 3D rendering, GLSL shader programming, collision detection, and interactive storytelling through game mechanics.',
-        thumbnailUrl: '', // PLACEHOLDER — replace with screenshot image URL
+        thumbnailUrl: 'http://www.liujiani.net/personal_website/wp-content/uploads/2023/04/Screenshot-2023-04-22-at-9.33.43-AM-e1682181248611.png', // PLACEHOLDER — replace with screenshot image URL
         thumbnailBg:  'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)',
         tags:         ['WebGL', 'JavaScript', 'GLSL'],
         links: {
-          demo: '#', // PLACEHOLDER — add live demo URL
-          code: '#', // PLACEHOLDER — add GitHub repo URL
+          demo: 'https://jiani-liu-profile.netlify.app/images/project-thumbnail/Cave_Escape_Demo.mp4', // PLACEHOLDER — add live demo URL
+          code: 'https://github.com/687000/Cave-Escape', // PLACEHOLDER — add GitHub repo URL
+          detail: '#'
         },
       },
     ],
@@ -195,12 +198,12 @@ const CONFIG = {
       {
         name:  'Frontend',
         color: '#6366f1',
-        items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Vue', 'React', 'WebGL', 'Component Architecture', 'State Management'],
+        items: ['Vue', 'React', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'WebGL', 'Component Architecture', 'State Management'],
       },
       {
         name:  'Design & UI',
         color: '#ec4899',
-        items: ['Figma', 'UI/UX Design', 'Design Systems', 'Ant Design', 'Responsive Layout', 'Accessibility'],
+        items: ['Figma', 'UI/UX Design', 'Design Systems', 'Element UI', 'Responsive Layout', 'Accessibility', 'Digital Illustration'],
       },
       {
         name:  'Backend & Integration',
