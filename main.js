@@ -231,11 +231,11 @@ RENDERERS.projects = function (cfg) {
 
     const demoLink = item.links.demo && item.links.demo !== '#'
       ? `<a href="${item.links.demo}" target="_blank" rel="noopener" class="project-link project-link--demo">${SVG.external} Live Demo</a>`
-      : `<span class="project-link project-link--demo" style="opacity:.35;pointer-events:none">${SVG.external} Demo TBD</span>`;
+      : ``
 
     const codeLink = item.links.code && item.links.code !== '#'
       ? `<a href="${item.links.code}" target="_blank" rel="noopener" class="project-link project-link--code">${SVG.github} Code</a>`
-      : `<span class="project-link project-link--code" style="opacity:.35;pointer-events:none">${SVG.github} Code TBD</span>`;
+      : ``
 
     const detailLink = item.links.detail && item.detail.code !== '#'
       ? `<a href="${item.links.detail}" target="_blank" rel="noopener" class="project-link project-link--code">Detail</a>`

@@ -8,7 +8,7 @@ const CONFIG = {
   // ----------------------------------------------------------
   site: {
     title:       'Jiani Liu — Web Developer',
-    description: 'Web developer specializing in complex UI flows, workflow systems, and interactive web experiences.',
+    description: 'Web developer specializing in complex UI flows, workflow systems, and interactive web applications.',
   },
 
   // ----------------------------------------------------------
@@ -34,7 +34,7 @@ const CONFIG = {
     name:     'Jiani Liu',
     title:    'Web Developer',
     location: 'San Jose, CA',
-    tagline:  'I build complex, production-grade web applications, coordinating workflows, automations, and user experiences at scale.',
+    tagline:  'Web developer specializing in complex UI flows, workflow systems, and interactive web applications.',
     ctas: [
       { label: 'Experiences', href: '#section-experience', style: 'primary'  },
       { label: 'Resume ↓',    href: 'http://www.liujiani.net/assets/Jiani_Liu_Web_Dev.pdf', style: 'outline', download: true },
@@ -56,8 +56,8 @@ const CONFIG = {
     sectionLabel: 'About',
     heading:      'Bridging design thinking and engineering precision.',
     bio: [
-      "I'm a 2 years experience web developer with experience building complex web applications, workflow-driven systems, and reusable UI systems. Strong background in Vue/TypeScript product development, technical design translation, debugging, and cross-functional collaboration across engineering, product, design, and QA.",
-      "I studied Interaction & UI/UX Design at Academy of Art and Mathematics of Computation at UCLA. That combination — analytical rigor paired with visual craft — shapes how I approach every interface problem.",
+      "I'm a web developer with 2+ years of experience building web applications, workflow-driven systems, and reusable UI components. My background combines product-focused engineering with UI/UX design, which helps me translate requirements into clear, reliable user experiences.",
+      "I've worked across engineering, product, design, and QA to build features, debug complex UI behavior, and improve maintainability in production environments.",
     ],
     timeline: [
       {
@@ -164,11 +164,11 @@ const CONFIG = {
         type:     'Full-time',
         url:      'https://www.moxo.com/',
         bullets: [
-          'Owned frontend implementation of complex product features for a B2B workflow platform — including workflow builders, runtime flows, onboarding, and state-heavy user interactions.',
-          'Designed and built multi-step workflow creation flows with participant invitations, role-based assignment logic, private messaging, contact search, and cross-step state synchronization.',
-          'Improved performance and reliability in high-traffic interfaces through lazy loading, request deduplication, retry handling, caching, and state reset strategies.',
-          'Delivered form-builder enhancements including drag-and-drop image upload, immediate thumbnail synchronization, client-side caching, and deferred asset upload on final save.',
-          'Documented technical implementation plans — analyzing feature scope, affected UI flows, data model changes, API impacts, edge cases, and regression risks before development.',
+          'Led frontend implementation for key modules in a B2B workflow platform, including workflow builders, runtime flows, onboarding, and state-heavy user interactions.',
+          'Built multi-step workflow creation flows with participant invitations, role-based assignment, private messaging, contact search, and synchronized cross-step state.',
+          'Improved performance in high-traffic workflows through lazy loading, request deduplication, and caching, reducing unnecessary API calls during repeated interactions.',
+          'Enhanced form builder features with drag-and-drop image upload, thumbnail preview, and deferred asset upload, improving responsiveness for media-heavy forms.',
+          'Documented technical implementation plans to define feature scope, UI changes, API impacts, edge cases, and regression risks.'
         ],
       },
       {
@@ -179,7 +179,7 @@ const CONFIG = {
         type:     'Volunteer',
         url:      'https://brightmindenrichment.org/',
         bullets: [
-          'Led a distributed team of 50+ volunteer web contributors and coordinated implementation priorities across multiple website initiatives.',
+          'Led a distributed team of 20+ volunteer web contributors and coordinated implementation priorities across multiple website initiatives.',
           'Built documentation for WordPress architecture, plugin management, and deployment workflows — improving contributor onboarding and project continuity.',
           "Created a reusable UI component library and style guidelines to standardize the organization's web presence across projects.",
           'Improved cross-team collaboration by documenting site structure, contributor workflows, and implementation expectations.',
@@ -198,22 +198,22 @@ const CONFIG = {
       {
         name:  'Frontend',
         color: '#6366f1',
-        items: ['Vue', 'React', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'WebGL', 'Component Architecture', 'State Management'],
+        items: ['Vue', 'React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'State Management', 'Component Architecture'],
       },
       {
-        name:  'Design & UI',
+        name:  'UI / Product',
         color: '#ec4899',
-        items: ['Figma', 'UI/UX Design', 'Design Systems', 'Element UI', 'Responsive Layout', 'Accessibility', 'Digital Illustration'],
+        items: ['Element UI', 'Accessibility', 'Responsive Layout', 'Figma'],
       },
       {
-        name:  'Backend & Integration',
-        color: '#10b981',
-        items: ['Ruby on Rails', 'PHP', 'AJAX', 'REST APIs', 'WordPress', 'API-integrated Features'],
-      },
-      {
-        name:  'Process & Delivery',
+        name:  'Engineering Practice',
         color: '#f59e0b',
-        items: ['Technical Documentation', 'Performance Optimization', 'UI QA', 'Debugging', 'Code Review', 'Implementation Planning'],
+        items: ['Debugging', 'Performance Optimization', 'Technical Documentation', 'Cross-functional Collaboration'],
+      },
+      {
+        name:  'Backend / CMS',
+        color: '#10b981',
+        items: ['REST APIs', 'WordPress', 'PHP', 'Ruby on Rails'],
       },
     ],
   },
