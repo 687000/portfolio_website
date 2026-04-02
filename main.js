@@ -47,7 +47,8 @@ const RENDERERS = {};
 // ── NAV ──────────────────────────────────────────────────────
 RENDERERS.nav = function (cfg) {
   const { initials, links, cta } = cfg.nav;
-  const navLinks    = links.map(l => `<a href="${l.href}" class="nav__link">${l.label}</a>`).join('');
+  const { switchLang } = cfg.ui;
+  const navLinks = links.map(l => `<a href="${l.href}" class="nav__link">${l.label}</a>`).join('');
   const mobileLinks = links.map(l => `<a href="${l.href}" class="nav__mobile-link">${l.label}</a>`).join('');
   return `
     <nav class="nav" id="nav">
@@ -58,16 +59,24 @@ RENDERERS.nav = function (cfg) {
           <div class="nav__actions">
             <a href="${cta.href}" class="nav__cta">${cta.label}</a>
           </div>
-          <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
+          <div class="nav__actions">
+            <button type="button" class="nav__cta lang-switch-btn">${switchLang}</button>
+          </div>
         </div>
+        <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
     <div class="nav__mobile-menu" id="nav-mobile" role="navigation">
       ${mobileLinks}
       <div class="nav__mobile-cta">
         <a href="${cta.href}" class="btn btn--primary" style="width:100%;justify-content:center">${cta.label}</a>
+      </div>
+      <div class="nav__mobile-cta">
+        <button type="button" class="btn btn--primary lang-switch-btn" style="width:100%;justify-content:center">
+          ${switchLang}
+        </button>
       </div>
     </div>`;
 };
@@ -315,16 +324,39 @@ RENDERERS.footer = function (cfg) {
 };
 
 // ── RENDER APP ────────────────────────────────────────────────
-function renderApp() {
+function renderApp(language = 'en') {
   const app = document.getElementById('app');
-  let html  = RENDERERS.nav(CONFIG);
-  html     += '<main>';
+  const CONFIG = getConfig(language);
+
+  let html = RENDERERS.nav(CONFIG);
+  html += '<main>';
+
   SECTION_ORDER.forEach(key => {
     html += RENDERERS[key] ? RENDERERS[key](CONFIG) : '';
   });
   html += '</main>';
   html += RENDERERS.footer(CONFIG);
   app.innerHTML = html;
+}
+
+// ── LANGUAGE CHANGE ───────────────────────────────────────────
+function initLanguageSwitch() {
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.lang-switch-btn');
+    if (!btn) return;
+    switchLanguage();
+  });
+}
+
+function switchLanguage(language) {
+  const saved = localStorage.getItem('language') || 'en';
+  const nextLanguage = language || (saved === 'en' ? 'zh' : 'en');
+  localStorage.setItem('language', nextLanguage);
+  renderApp(nextLanguage);
+  initNav();
+  initProjectAnimations();
+  initExperienceAnimations();
+  initScrollAnimations();
 }
 
 // ── NAV ──────────────────────────────────────────────────────
@@ -501,7 +533,9 @@ function initThemeToggle() {
 
 // ── BOOT ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  renderApp();
+  const savedLanguage = localStorage.getItem('language') || 'en';
+  renderApp(savedLanguage);
+  initLanguageSwitch();
   initNav();
   initProjectAnimations();
   initExperienceAnimations();

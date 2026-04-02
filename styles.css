@@ -157,7 +157,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   transition: color 0.15s ease, background 0.15s ease;
 }
 .nav__link:hover { color: var(--tx-dark); background: rgba(35,40,38,0.05); }
-.nav__actions { margin-left: auto; }
+.nav__actions { margin-left: 20px; }
 .nav__cta {
   background: var(--btn-dark); color: var(--white);
   padding: 8px 18px; font-size: 13.5px; font-weight: 500; border-radius: var(--r-f);
@@ -200,7 +200,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   transition: background 0.15s ease, color 0.15s ease;
 }
 .nav__mobile-link:hover { background: var(--bg-2); color: var(--tx-dark); }
-.nav__mobile-cta { margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--border); }
+.nav__mobile-cta { margin-top: 8px; margin-right: 8px; padding-top: 12px; border-top: 1px solid var(--border); }
 
 /* ── HERO ─────────────────────────────────────────────────────── */
 .section--hero {
