@@ -241,12 +241,13 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   );
 }
 
-/* Spanning glass panel — left edge anchored, right edge expands outward */
+/* Spanning glass panel — left edge anchored, height driven by content */
 .hero__panel {
   position: absolute;
-  top: 0; left: 0; bottom: 0;
-  width: clamp(340px, calc(50% - 40px), 900px);
-  background: rgba(247, 246, 243, 0.82);
+  top: 50%; left: 0;
+  transform: translateY(-50%);
+  width: clamp(340px, 60%, 1200px);
+  background: rgba(247, 246, 243, 0.1);
   backdrop-filter: blur(26px) saturate(138%);
   -webkit-backdrop-filter: blur(26px) saturate(138%);
   box-shadow:
@@ -254,17 +255,15 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     0 0 80px rgba(35, 40, 38, 0.10),
     0 4px 24px rgba(35, 40, 38, 0.07);
   z-index: 2;
-  /* Shell curve on lower-right via clip-path — animates the right edge expanding */
-  clip-path: inset(0 100% 0 0 round 0 0 88px 0);
+  /* Shell curve on upper-right and lower-right via clip-path — animates the right edge expanding */
+  clip-path: inset(0 100% 0 0 round 0 88px 88px 0);
   animation: heroPanelExpand 2.4s var(--ease) 0.18s forwards;
-  height: 95%;
 }
 
-/* Content centred vertically within the full-height panel */
+/* Content drives the panel height */
 .hero__panel-content {
-  height: 100%;
   display: flex; flex-direction: column; justify-content: center;
-  padding: calc(var(--nav-h) + 40px) 24px 72px max(calc((100vw - var(--max)) / 2 + 24px), 24px);
+  padding: 60px 24px 60px max(calc((100vw - var(--max)) / 2 + 24px), 24px);
 }
 
 .hero__greeting {
@@ -321,8 +320,8 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 /* Panel right edge sweeps left → right, shell curve visible throughout */
 @keyframes heroPanelExpand {
-  from { clip-path: inset(0 100% 0 0 round 0 0 88px 0); }
-  to   { clip-path: inset(0 0%   0 0 round 0 0 88px 0); }
+  from { clip-path: inset(0 100% 0 0 round 0 88px 88px 0); }
+  to   { clip-path: inset(0 0%   0 0 round 0 88px 88px 0); }
 }
 @keyframes heroFadeIn {
   from { opacity: 0; }
@@ -832,12 +831,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   .section--hero { align-items: flex-start; border-radius: 0 0 clamp(44px,10vw,72px) 0; }
   .hero__panel {
     position: relative; width: 100%;
+    transform: none;
     clip-path: none;
-    border-radius: 0 0 clamp(44px, 10vw, 72px) 0;
+    border-radius: 0 clamp(44px, 10vw, 72px) clamp(44px, 10vw, 72px) 0;
     animation: heroFadeIn 0.9s var(--ease) 0.1s forwards;
   }
   .hero__panel-content {
-    height: auto;
     padding: calc(var(--nav-h) + 28px) 24px 44px;
   }
   .exp-card   { padding: 20px 18px 18px; }
