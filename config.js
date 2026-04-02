@@ -47,6 +47,7 @@ const CONFIG = {
     ],
     photo: '',
     heroImage: 'http://www.liujiani.net/assets/images/waves.png',
+    bgImage: 'http://www.liujiani.net/assets/images/fernando-garcia-zuPXH2Nrzpg-unsplash.jpg'
   },
 
   // ----------------------------------------------------------

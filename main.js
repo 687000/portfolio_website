@@ -74,7 +74,7 @@ RENDERERS.nav = function (cfg) {
 
 // ── HERO ──────────────────────────────────────────────────────
 RENDERERS.hero = function (cfg) {
-  const { greeting, name, title, tagline, ctas, social, photo, heroImage } = cfg.hero;
+  const { greeting, name, title, tagline, ctas, social, heroImage, bgImage } = cfg.hero;
 
   const ctaBtns = ctas.map(c =>
     `<a href="${c.href}" class="btn btn--${c.style === 'primary' ? 'primary' : 'outline-inv'}">${c.label}</a>`
@@ -87,29 +87,31 @@ RENDERERS.hero = function (cfg) {
     </a>`
   ).join('');
 
-  const avatar = photo
-    ? `<img src="${photo}" alt="${name}" class="hero__photo" loading="eager">`
-    : heroImage
-      ? `<div class="hero__visual-card">
-           <img src="${heroImage}" alt="" class="hero__card-img" aria-hidden="true" loading="eager">
-           <div class="hero__card-overlay"></div>
-         </div>`
-      : `<div class="hero__avatar-placeholder">${cfg.nav.initials}</div>`;
+  // Preload hint so the browser starts fetching the image immediately
+  if (heroImage && !document.querySelector(`link[href="${heroImage}"]`)) {
+    const pre = document.createElement('link');
+    pre.rel = 'preload'; pre.as = 'image'; pre.href = heroImage;
+    document.head.appendChild(pre);
+  }
+
+  const bgLayer = heroImage
+    ? `<div class="hero__bg" style="background-image:url('${heroImage}')">
+         <div class="hero__bg-tint"></div>
+       </div>`
+    : `<div class="hero__bg hero__bg--gradient style="background-image: linear-gradient(rgba(80, 140, 145, 0.38), rgba(80, 140, 145, 0.38)), url('${bgImage}')""></div>`;
 
   return `
     <section id="section-hero" class="section section--hero">
-      <div class="hero__glow"></div>
-      <div class="hero__glow-2"></div>
-      <div class="hero__inner">
-        <div class="hero__content">
-          <p  class="hero__greeting hero-in" style="--delay:.02s">${greeting}</p>
-          <h1 class="hero__name    hero-in" style="--delay:.08s">${name}</h1>
-          <p  class="hero__title   hero-in" style="--delay:.15s">${title}</p>
-          <p  class="hero__tagline hero-in" style="--delay:.22s">${tagline}</p>
-          <div class="hero__ctas   hero-in" style="--delay:.30s">${ctaBtns}</div>
-          <div class="hero__social hero-in" style="--delay:.38s">${socialLinks}</div>
+      ${bgLayer}
+      <div class="hero__panel">
+        <div class="hero__panel-content">
+          <p  class="hero__greeting hero-in" style="--delay:.90s">${greeting}</p>
+          <h1 class="hero__name    hero-in" style="--delay:1.06s">${name}</h1>
+          <p  class="hero__title   hero-in" style="--delay:1.22s">${title}</p>
+          <p  class="hero__tagline hero-in" style="--delay:1.38s">${tagline}</p>
+          <div class="hero__ctas   hero-in" style="--delay:1.54s">${ctaBtns}</div>
+          <div class="hero__social hero-in" style="--delay:1.68s">${socialLinks}</div>
         </div>
-        <div class="hero-in" style="--delay:.18s">${avatar}</div>
       </div>
       <div class="hero__scroll" aria-hidden="true">
         <span>scroll</span><div class="hero__scroll-arrow"></div>
@@ -236,10 +238,6 @@ RENDERERS.projects = function (cfg) {
     const codeLink = item.links.code && item.links.code !== '#'
       ? `<a href="${item.links.code}" target="_blank" rel="noopener" class="project-link project-link--code">${SVG.github} Code</a>`
       : ``
-
-    const detailLink = item.links.detail && item.detail.code !== '#'
-      ? `<a href="${item.links.detail}" target="_blank" rel="noopener" class="project-link project-link--code">Detail</a>`
-      : `<span class="project-link project-link--code" style="opacity:.35;pointer-events:none">Detail TBD</span>`;
 
     // --i drives the CSS stagger delay
     return `
