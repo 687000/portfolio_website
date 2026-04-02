@@ -183,7 +183,7 @@ const TRANSLATIONS = {
 
     about: {
       sectionLabel: '关于我',
-      heading: '在设计思维与工程实现之间搭建可靠的连接。',
+      heading: '以逻辑建构秩序，以视觉引导流程',
       backgroundLabel: '背景',
       bio: [
         '我是一名前端工程师，拥有 2 年以上 Web 应用、工作流系统与可复用 UI 组件开发经验。我的背景结合了产品导向的工程实践与 UI/UX 设计训练，能够将需求清晰地转化为稳定、易用的用户体验。',
@@ -219,7 +219,7 @@ const TRANSLATIONS = {
 
     projects: {
       sectionLabel: '精选作品',
-      heading: '项目',
+      heading: '项目经历',
       items: [
         {
           name: '工作流管理工具',
