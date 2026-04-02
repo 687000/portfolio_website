@@ -470,6 +470,35 @@ function initSmoothScroll() {
   });
 }
 
+// ── THEME TOGGLE ──────────────────────────────────────────────
+function initThemeToggle() {
+  const btn = document.createElement('button');
+  btn.id = 'theme-toggle';
+  btn.setAttribute('aria-label', 'Toggle dark mode');
+
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = saved === 'dark' || (!saved && prefersDark);
+
+  if (isDark) document.documentElement.setAttribute('data-theme', 'dark');
+  btn.textContent = isDark ? '☀' : '☽';
+
+  btn.addEventListener('click', () => {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (dark) {
+      document.documentElement.removeAttribute('data-theme');
+      btn.textContent = '☽';
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      btn.textContent = '☀';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  document.body.appendChild(btn);
+}
+
 // ── BOOT ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   renderApp();
@@ -478,4 +507,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initExperienceAnimations();
   initScrollAnimations();
   initSmoothScroll();
+  initThemeToggle();
 });
