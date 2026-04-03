@@ -46,7 +46,7 @@ const RENDERERS = {};
 
 // ── NAV ──────────────────────────────────────────────────────
 RENDERERS.nav = function (cfg) {
-  const { initials, links, cta } = cfg.nav;
+  const { initials, links, cta, logoImage } = cfg.nav;
   const { switchLang } = cfg.ui;
   const navLinks = links.map(l => `<a href="${l.href}" class="nav__link">${l.label}</a>`).join('');
   const mobileLinks = links.map(l => `<a href="${l.href}" class="nav__mobile-link">${l.label}</a>`).join('');
@@ -55,7 +55,7 @@ RENDERERS.nav = function (cfg) {
       <div class="nav__outer">
         <div class="nav__inner">
           <a href="#" class="nav__logo-mark" aria-label="Home">
-            <img src="http://www.liujiani.net/assets/template/cropped-logo-bkg.png" alt="Jiani Liu" class="nav__logo-img" width="36" height="36">
+            <img src="${logoImage}" alt="Jiani Liu" class="nav__logo-img" width="36" height="36">
           </a>
           <div class="nav__links">${navLinks}</div>
           <div class="nav__actions">
@@ -356,6 +356,8 @@ function switchLanguage(language) {
   initProjectAnimations();
   initExperienceAnimations();
   initScrollAnimations();
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  applyThemeBgImages(isDark);
 }
 
 // ── NAV ──────────────────────────────────────────────────────
@@ -506,6 +508,25 @@ function initSmoothScroll() {
 }
 
 // ── THEME TOGGLE ──────────────────────────────────────────────
+function applyThemeBgImages(isDark) {
+  const heroBgEl  = document.querySelector('.hero__bg');
+  const contactEl = document.querySelector('.section--contact');
+  const cfg       = CONFIG_BASE;
+
+  if (heroBgEl) {
+    const img = isDark && cfg.hero.darkHeroImage ? cfg.hero.darkHeroImage : cfg.hero.heroImage;
+    heroBgEl.style.backgroundImage = `url('${img}')`;
+  }
+
+  if (contactEl) {
+    const img  = isDark && cfg.contact.darkContactBgImage
+      ? cfg.contact.darkContactBgImage
+      : cfg.contact.bgImage;
+    const tint = 'linear-gradient(rgba(80, 140, 145, 0.38), rgba(80, 140, 145, 0.38))';
+    contactEl.style.backgroundImage = isDark ? `url('${img}')` : `${tint}, url('${img}')`;
+  }
+}
+
 function initThemeToggle() {
   const btn = document.createElement('button');
   btn.id = 'theme-toggle';
@@ -517,6 +538,7 @@ function initThemeToggle() {
 
   if (isDark) document.documentElement.setAttribute('data-theme', 'dark');
   btn.textContent = isDark ? '☀' : '☽';
+  applyThemeBgImages(isDark);
 
   btn.addEventListener('click', () => {
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -529,6 +551,7 @@ function initThemeToggle() {
       btn.textContent = '☀';
       localStorage.setItem('theme', 'dark');
     }
+    applyThemeBgImages(!dark);
   });
 
   document.body.appendChild(btn);

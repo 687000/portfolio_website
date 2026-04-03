@@ -10,8 +10,9 @@ const CONFIG_BASE = {
   // NAVIGATION
   // ----------------------------------------------------------
   nav: {
-    initials: 'JL',
-    name:     'Jiani Liu',
+    initials:      'JL',
+    name:          'Jiani Liu',
+    logoImage:     'http://www.liujiani.net/assets/template/cropped-logo-bkg.png',
     links: [
       { href: '#section-experience' },
       { href: '#section-projects'   },
@@ -25,9 +26,10 @@ const CONFIG_BASE = {
   // HERO
   // ----------------------------------------------------------
   hero: {
-    photo:     '',
-    heroImage: 'http://www.liujiani.net/assets/images/waves.png',
-    bgImage:   'http://www.liujiani.net/assets/images/fernando-garcia-zuPXH2Nrzpg-unsplash.jpg',
+    photo:          '',
+    heroImage:      'http://www.liujiani.net/assets/images/waves.png',
+    darkHeroImage:  'https://images.unsplash.com/photo-1544961371-516024f8e267',
+    bgImage:        'http://www.liujiani.net/assets/images/fernando-garcia-zuPXH2Nrzpg-unsplash.jpg',
     ctas: [
       { href: '#section-experience', style: 'primary'  },
       { href: 'http://www.liujiani.net/assets/Jiani_Liu_Web_Dev.pdf', style: 'outline', download: true },
@@ -110,7 +112,8 @@ const CONFIG_BASE = {
   // CONTACT
   // ----------------------------------------------------------
   contact: {
-    bgImage: 'http://www.liujiani.net/assets/images/fernando-garcia-zuPXH2Nrzpg-unsplash.jpg',
+    bgImage:         'http://www.liujiani.net/assets/images/fernando-garcia-zuPXH2Nrzpg-unsplash.jpg',
+    darkContactBgImage: 'https://images.unsplash.com/photo-1544961371-516024f8e267',
     links: [
       { href: 'mailto:jianiliu33@gmail.com',                      icon: 'email',    primary: true  },
       { href: 'https://www.linkedin.com/in/jiani-liu-547662192/', icon: 'linkedin', primary: false },
@@ -163,10 +166,11 @@ function getConfig(lang) {
     site: t.site,
 
     nav: {
-      initials: b.nav.initials,
-      name:     b.nav.name,
-      links:    b.nav.links.map((l, i) => ({ ...l, label: t.nav.links[i].label })),
-      cta:      { ...b.nav.cta, label: t.nav.cta.label },
+      initials:  b.nav.initials,
+      name:      b.nav.name,
+      logoImage: b.nav.logoImage,
+      links:     b.nav.links.map((l, i) => ({ ...l, label: t.nav.links[i].label })),
+      cta:       { ...b.nav.cta, label: t.nav.cta.label },
     },
 
     hero: {
