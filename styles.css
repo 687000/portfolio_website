@@ -13,12 +13,12 @@
   --bg-3:            #DCE8DA;
   --sage-accent:     #DCE8DA;
   --sage-mid:        #BFD3C2;
-  --sage-dark:       #7A9E80;
+  --sage-dark:       #46774C;   /* darkened: 4.80:1 on bg-2; white text 5.36:1 as bg */
   --hero-start:      #8FD3CC;
   --hero-end:        #BFE6D8;
   --border:          #D9DDD6;
   --border-soft:     rgba(217,221,214,0.5);
-  --tx-light:        #7C857D;
+  --tx-light:        #5C6D60;   /* darkened: 4.95:1 on bg-2, 5.53:1 on white */
   --tx:              #4B4F4B;
   --tx-dark:         #232826;
   --btn-dark:        #2F3431;
@@ -79,7 +79,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 /* ── SECTION LABELS ──────────────────────────────────────────── */
 .section-label {
   display: inline-block; font-family: var(--font-sans);
-  font-size: 10.5px; font-weight: 600;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 10px;
 }
 .label--sage  { color: var(--sage-dark); }
@@ -103,6 +103,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   padding: 12px 22px; border-radius: var(--r-f);
   font-family: var(--font-sans);
   font-size: 13.5px; font-weight: 500; white-space: nowrap;
+  min-height: 44px; /* WCAG 2.5.8 touch target */
   transition: transform 0.2s var(--ease), box-shadow 0.2s ease, background 0.2s ease, color 0.15s ease;
 }
 .btn:hover { transform: translateY(-1px); }
@@ -145,10 +146,16 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   height: var(--nav-h); display: flex; align-items: center;
 }
 .nav__logo-mark {
-  font-family: var(--font-serif);
-  font-size: 20px; font-weight: 600; letter-spacing: -0.02em;
-  color: var(--tx-dark); margin-right: 36px; flex-shrink: 0;
-  transition: color 0.3s ease;
+  display: inline-flex; align-items: center;
+  margin-right: 36px; flex-shrink: 0;
+  border-radius: var(--r-sm);
+  transition: opacity 0.2s ease;
+}
+.nav__logo-mark:hover { opacity: 0.80; }
+.nav__logo-img {
+  width: 36px; height: 36px;
+  object-fit: contain; display: block;
+  border-radius: var(--r-sm);
 }
 .nav__links { display: flex; gap: 2px; flex: 1; }
 .nav__link {
@@ -159,8 +166,10 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .nav__link:hover { color: var(--tx-dark); background: rgba(35,40,38,0.05); }
 .nav__actions { margin-left: 20px; }
 .nav__cta {
+  display: inline-flex; align-items: center;
   background: var(--btn-dark); color: var(--white);
-  padding: 8px 18px; font-size: 13.5px; font-weight: 500; border-radius: var(--r-f);
+  padding: 7px 16px; font-size: 13.5px; font-weight: 500; border-radius: var(--r-f);
+  min-height: 36px;
   transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 .nav__cta:hover { background: var(--btn-dark-h); }
@@ -270,7 +279,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .hero__greeting {
   font-family: var(--font-sans);
   font-size: clamp(16px, 2vw, 22px); font-weight: 400;
-  color: rgba(35,40,38,0.60); margin-bottom: 15px;
+  color: rgba(35,40,38,0.70); margin-bottom: 15px;
 }
 
 .hero__name {
@@ -283,14 +292,14 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .hero__title {
   font-family: var(--font-sans);
   font-size: clamp(15px, 1.8vw, 19px); font-weight: 500;
-  color: rgba(35,40,38,0.72); letter-spacing: -0.01em;
+  color: rgba(35,40,38,0.82); letter-spacing: -0.01em;
   margin-bottom: 15px;
 }
 
 .hero__tagline {
   font-family: var(--font-sans);
   font-size: clamp(14.5px, 1.45vw, 16.5px); line-height: 1.78;
-  color: rgba(35,40,38,0.62); max-width: 500px; margin-bottom: 25px;
+  color: rgba(35,40,38,0.72); max-width: 500px; margin-bottom: 25px;
 }
 .hero__ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
 
@@ -298,6 +307,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .hero__social { display: flex; gap: 8px; flex-wrap: wrap; }
 .hero__social-link {
   display: inline-flex; align-items: center; justify-content: center;
+  min-width: 44px; min-height: 44px; /* WCAG 2.5.8 touch target */
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 .hero__social-link:hover { opacity: 0.75; transform: translateY(-1px); }
@@ -307,7 +317,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.60);
-  border-radius: 8px; width: 36px; height: 36px;
+  border-radius: 8px; width: 40px; height: 40px;
   display: inline-flex; align-items: center; justify-content: center;
   color: var(--tx-dark);
   box-shadow: 0 1px 4px rgba(35,40,38,0.06);
@@ -388,7 +398,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   color: var(--tx-dark);
   border: 1px solid rgba(255,255,255,0.55);
   border-radius: var(--r-f);
-  padding: 3px 9px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em;
+  padding: 3px 9px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
 }
 
 .project-card__body { padding: 22px 24px 24px; }
@@ -405,15 +415,16 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .project-card__tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
 .project-card__tag {
-  font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: var(--r-f);
-  background: var(--sage-accent); color: rgba(35,40,38,0.62);
+  font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: var(--r-f);
+  background: var(--sage-accent); color: var(--tx);
   letter-spacing: 0.02em;
 }
 .project-card__links { display: flex; gap: 8px; }
 
 .project-link {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: var(--r-f);
+  font-size: 12px; font-weight: 500; padding: 11px 16px; border-radius: var(--r-f);
+  min-height: 44px; /* WCAG 2.5.8 touch target */
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 .project-link--demo {
@@ -520,12 +531,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   font-variant-numeric: tabular-nums;
 }
 .exp-card__type {
-  font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
   padding: 2px 8px; border-radius: var(--r-f);
-  color: rgba(35,40,38,0.50); background: var(--sage-accent);
+  color: var(--tx); background: var(--sage-accent);
 }
-.exp-card__type--full-time { background: rgba(245,158,11,0.10); color: #d97706; }
-.exp-card__type--volunteer  { background: rgba(16,185,129,0.10); color: #10b981; }
+.exp-card__type--full-time { background: rgba(245,158,11,0.10); color: #92400E; } /* was #d97706: 3.26:1 FAIL */
+.exp-card__type--volunteer  { background: rgba(16,185,129,0.10); color: #047857; } /* was #10b981: 2.66:1 FAIL */
 
 .exp-card__location {
   font-size: 12px; color: var(--tx-light); margin-bottom: 18px;
@@ -559,7 +570,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .skill-category__dot    { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 .skill-category__name   {
   font-family: var(--font-sans);
-  font-size: 10.5px; font-weight: 600; text-transform: uppercase;
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.12em; color: var(--tx-light);
 }
 
@@ -591,7 +602,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
 .about__edu-heading {
   font-family: var(--font-sans);
-  font-size: 10.5px; font-weight: 600; text-transform: uppercase;
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.12em; color: var(--tx-light); margin-bottom: 18px;
 }
 
@@ -648,13 +659,13 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
 .about-tl-badge {
   font-family: var(--font-sans);
-  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.08em; padding: 2px 7px; border-radius: 20px;
   white-space: nowrap; flex-shrink: 0; margin-top: 2px;
 }
-.about-tl-badge--education { background: rgba(99,102,241,0.10); color: #6366f1; }
-.about-tl-badge--volunteer  { background: rgba(16,185,129,0.10); color: #10b981; }
-.about-tl-badge--full-time { background: rgba(245,158,11,0.10);  color: #d97706; }
+.about-tl-badge--education { background: rgba(99,102,241,0.10); color: #4338CA; } /* was #6366f1: 4.38:1 FAIL */
+.about-tl-badge--volunteer  { background: rgba(16,185,129,0.10); color: #047857; } /* was #10b981: 2.66:1 FAIL */
+.about-tl-badge--full-time { background: rgba(245,158,11,0.10);  color: #92400E; } /* was #d97706: 3.26:1 FAIL */
 
 /* ── CONTACT ──────────────────────────────────────────────────── */
 .section--contact {
@@ -730,6 +741,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   display: inline-flex; align-items: center; gap: 7px;
   padding: 11px 20px; border-radius: var(--r-f);
   font-size: 13.5px; font-weight: 500;
+  min-height: 44px; /* WCAG 2.5.8 touch target */
   transition: background 0.2s ease, border-color 0.2s ease, color 0.15s ease, transform 0.2s ease;
 }
 .contact__link:hover { transform: translateY(-1px); }
@@ -742,13 +754,13 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   box-shadow: 0 6px 24px rgba(255,255,255,0.16);
 }
 .contact__link--secondary {
-  background: transparent; color: rgba(255,255,255,0.70);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: rgba(255,255,255,0.80);
+  border: 1px solid rgba(255,255,255,0.18);
 }
 .contact__link--secondary:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.24);
-  color: rgba(255,255,255,0.82);
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.95);
 }
 
 .contact__link-icon {
@@ -770,16 +782,16 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .footer__left  { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .footer__name  {
   font-family: var(--font-serif);
-  font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.28);
+  font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.55);
 }
 .footer__links { display: flex; gap: 14px; }
-.footer__link  { font-size: 12px; color: rgba(255,255,255,0.22); transition: color 0.15s ease; }
-.footer__link:hover { color: rgba(255,255,255,0.55); }
+.footer__link  { font-size: 12px; color: rgba(255,255,255,0.72); transition: color 0.15s ease; }
+.footer__link:hover { color: rgba(255,255,255,0.95); }
 .footer__right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .footer__social { display: flex; gap: 12px; }
-.footer__social-link { font-size: 12px; color: rgba(255,255,255,0.22); transition: color 0.15s ease; }
-.footer__social-link:hover { color: rgba(255,255,255,0.55); }
-.footer__copyright { font-size: 11px; color: rgba(255,255,255,0.14); }
+.footer__social-link { font-size: 12px; color: rgba(255,255,255,0.72); transition: color 0.15s ease; }
+.footer__social-link:hover { color: rgba(255,255,255,0.95); }
+.footer__copyright { font-size: 12px; color: rgba(255,255,255,0.40); }
 
 /* ── GENERIC SCROLL ANIMATIONS ─────────────────────────────────── */
 .anim {
@@ -815,6 +827,37 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   .project-card.card-settled, .exp-card.card-settled { transition: none !important; }
   .experience__list::before { transform: scaleY(1) !important; }
   .exp-card::before { transform: scale(1) !important; }
+}
+
+/* ── SKIP LINK (WCAG 2.4.1 — Bypass Blocks, Level A) ──────────── */
+.skip-link {
+  position: absolute; top: -9999px; left: 8px;
+  padding: 10px 20px; border-radius: var(--r-md);
+  background: var(--btn-dark); color: var(--white);
+  font-family: var(--font-sans); font-size: 13.5px; font-weight: 500;
+  z-index: 9999; white-space: nowrap;
+}
+.skip-link:focus { top: 8px; }
+
+/* ── FOCUS INDICATORS (WCAG 2.4.7 / 2.4.11) ─────────────────── */
+/* Applies to all interactive elements via keyboard navigation only */
+:focus-visible {
+  outline: 2px solid var(--sage-dark);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+/* On dark section backgrounds, use a light outline */
+.section--contact :focus-visible,
+.footer :focus-visible,
+.nav__mobile-menu :focus-visible {
+  outline-color: rgba(255, 255, 255, 0.85);
+}
+/* Buttons/links already have enough visual affordance; keep outline tight */
+.btn:focus-visible,
+.nav__cta:focus-visible,
+.contact__link:focus-visible,
+.project-link:focus-visible {
+  outline-offset: 2px;
 }
 
 /* ── DARK MODE ────────────────────────────────────────────────── */
@@ -868,9 +911,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     transparent 100%
   );
 }
-[data-theme="dark"] .hero__greeting { color: rgba(228,237,229,0.55); }
-[data-theme="dark"] .hero__title    { color: rgba(228,237,229,0.70); }
-[data-theme="dark"] .hero__tagline  { color: rgba(228,237,229,0.58); }
+[data-theme="dark"] .hero__greeting { color: rgba(228,237,229,0.65); }
+[data-theme="dark"] .hero__title    { color: rgba(228,237,229,0.80); }
+[data-theme="dark"] .hero__tagline  { color: rgba(228,237,229,0.68); }
 [data-theme="dark"] .hero__scroll   { color: rgba(228,237,229,0.28); }
 [data-theme="dark"] .hero__social-icon {
   background: rgba(255,255,255,0.08);
@@ -989,18 +1032,25 @@ body, .nav, .hero__panel, .project-card, .exp-card,
 }
 
 /* ── RESPONSIVE ───────────────────────────────────────────────── */
+
+/* ── Tablet & below (≤ 1024px) ───────────────────────────────── */
 @media (max-width: 1024px) {
   :root { --sec-py: 76px; }
-.projects__grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
-  .skills__grid   { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+  .projects__grid { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; }
+  .skills__grid   { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; }
   .about__grid    { grid-template-columns: 1fr; gap: 44px; }
-}
-@media (max-width: 768px) {
-  :root { --sec-py: 60px; }
+
+  /* Nav: switch to hamburger on tablet — fix outer layout so burger sits beside logo */
   .nav__links, .nav__actions { display: none; }
   .nav__hamburger { display: flex; }
-  /* On mobile the panel flows normally — full width, no absolute/clip-path */
-  .section--hero { align-items: flex-start; border-radius: 0 0 clamp(44px,10vw,72px) 0; }
+  .nav__outer { display: flex; align-items: center; }
+  .nav__inner { flex: 1; max-width: none; margin-inline: 0; }
+
+  /* background-attachment:fixed causes GPU repaints on mobile — switch to scroll */
+  .hero__bg { background-attachment: scroll; }
+
+  /* Hero panel flows in-document (no absolute/clip-path) on tablet & mobile */
+  .section--hero { align-items: flex-start; border-radius: 0 0 clamp(44px, 10vw, 72px) 0; }
   .hero__panel {
     position: relative; width: 100%;
     transform: none;
@@ -1009,8 +1059,14 @@ body, .nav, .hero__panel, .project-card, .exp-card,
     animation: heroFadeIn 0.9s var(--ease) 0.1s forwards;
   }
   .hero__panel-content {
-    padding: calc(var(--nav-h) + 28px) 24px 44px;
+    padding: calc(var(--nav-h) + 40px) 48px 56px;
   }
+}
+
+/* ── Small tablet / large phone (≤ 768px) ────────────────────── */
+@media (max-width: 768px) {
+  :root { --sec-py: 60px; }
+  .hero__panel-content { padding: calc(var(--nav-h) + 60px) 24px 80px; }
   .exp-card   { padding: 20px 18px 18px; }
   .exp-card__top { flex-direction: column; gap: 6px; }
   .exp-card__meta { align-items: flex-start; }
@@ -1018,8 +1074,16 @@ body, .nav, .hero__panel, .project-card, .exp-card,
   .footer__inner  { flex-direction: column; align-items: flex-start; }
   .footer__right  { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
+
+/* ── Small phone (≤ 480px) ───────────────────────────────────── */
 @media (max-width: 480px) {
-  .hero__name { font-size: 50px; }
+  :root { --sec-py: 48px; }
+  .hero__name { font-size: 46px; }
+  .hero__panel-content { padding: calc(var(--nav-h) + 60px) 18px 80px; }
+  .hero__tagline { font-size: 14px; }
+  .projects__grid, .skills__grid { max-width: 100%; }
+  .exp-card__company { font-size: 19px; }
   .contact__links { flex-direction: column; }
   .contact__link  { justify-content: center; }
+  .contact__glass { padding: 28px 16px; }
 }

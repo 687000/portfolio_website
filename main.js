@@ -54,13 +54,15 @@ RENDERERS.nav = function (cfg) {
     <nav class="nav" id="nav">
       <div class="nav__outer">
         <div class="nav__inner">
-          <a href="#" class="nav__logo-mark">${initials}</a>
+          <a href="#" class="nav__logo-mark" aria-label="Home">
+            <img src="http://www.liujiani.net/assets/template/cropped-logo-bkg.png" alt="Jiani Liu" class="nav__logo-img" width="36" height="36">
+          </a>
           <div class="nav__links">${navLinks}</div>
           <div class="nav__actions">
             <a href="${cta.href}" class="nav__cta">${cta.label}</a>
           </div>
           <div class="nav__actions">
-            <button type="button" class="nav__cta lang-switch-btn">${switchLang}</button>
+            <button type="button" class="nav__cta lang-switch-btn" aria-label="${switchLang === '中文' ? 'Switch to Chinese' : 'Switch to English'}">${switchLang}</button>
           </div>
         </div>
         <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
@@ -74,7 +76,7 @@ RENDERERS.nav = function (cfg) {
         <a href="${cta.href}" class="btn btn--primary" style="width:100%;justify-content:center">${cta.label}</a>
       </div>
       <div class="nav__mobile-cta">
-        <button type="button" class="btn btn--primary lang-switch-btn" style="width:100%;justify-content:center">
+        <button type="button" class="btn btn--primary lang-switch-btn" style="width:100%;justify-content:center" aria-label="${switchLang === '中文' ? 'Switch to Chinese' : 'Switch to English'}">
           ${switchLang}
         </button>
       </div>
@@ -95,13 +97,6 @@ RENDERERS.hero = function (cfg) {
       <i class="hero__social-icon">${svgAssets[s.icon]}</i>
     </a>`
   ).join('');
-
-  // Preload hint so the browser starts fetching the image immediately
-  if (heroImage && !document.querySelector(`link[href="${heroImage}"]`)) {
-    const pre = document.createElement('link');
-    pre.rel = 'preload'; pre.as = 'image'; pre.href = heroImage;
-    document.head.appendChild(pre);
-  }
 
   const bgLayer = heroImage
     ? `<div class="hero__bg" style="background-image:url('${heroImage}')">
@@ -328,8 +323,10 @@ function renderApp(language = 'en') {
   const app = document.getElementById('app');
   const CONFIG = getConfig(language);
 
-  let html = RENDERERS.nav(CONFIG);
-  html += '<main>';
+  // WCAG 2.4.1: Skip link rendered first so keyboard users can bypass nav
+  let html = '<a href="#main-content" class="skip-link">Skip to main content</a>';
+  html += RENDERERS.nav(CONFIG);
+  html += '<main id="main-content">';
 
   SECTION_ORDER.forEach(key => {
     html += RENDERERS[key] ? RENDERERS[key](CONFIG) : '';
@@ -352,6 +349,8 @@ function switchLanguage(language) {
   const saved = localStorage.getItem('language') || 'en';
   const nextLanguage = language || (saved === 'en' ? 'zh' : 'en');
   localStorage.setItem('language', nextLanguage);
+  // WCAG 3.1.1/3.1.2: keep lang attribute in sync with displayed language
+  document.documentElement.lang = nextLanguage;
   renderApp(nextLanguage);
   initNav();
   initProjectAnimations();
@@ -404,6 +403,10 @@ function initNav() {
 
   document.addEventListener('click', e => {
     if (!nav.contains(e.target) && !mobile.contains(e.target)) closeMenu();
+  });
+  // WCAG keyboard pattern: Escape closes the mobile menu
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobile.classList.contains('is-open')) closeMenu();
   });
   mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 }
@@ -534,6 +537,8 @@ function initThemeToggle() {
 // ── BOOT ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const savedLanguage = localStorage.getItem('language') || 'en';
+  // WCAG 3.1.1: set lang attribute to match the actual displayed language
+  document.documentElement.lang = savedLanguage;
   renderApp(savedLanguage);
   initLanguageSwitch();
   initNav();
