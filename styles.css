@@ -670,10 +670,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 /* ── CONTACT ──────────────────────────────────────────────────── */
 .section--contact {
   background: var(--sage-dark);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   text-align: center;
   padding: 112px 0 96px;
   position: relative; overflow: hidden;
-
 }
 /* Atmospheric orbs — echoes the hero palette quietly */
 .section--contact::before {
@@ -1048,6 +1050,7 @@ body, .nav, .hero__panel, .project-card, .exp-card,
 
   /* background-attachment:fixed causes GPU repaints on mobile — switch to scroll */
   .hero__bg { background-attachment: scroll; }
+  .section--contact { background-attachment: scroll; }
 
   /* Hero panel flows in-document (no absolute/clip-path) on tablet & mobile */
   .section--hero { align-items: flex-start; border-radius: 0 0 clamp(44px, 10vw, 72px) 0; }
