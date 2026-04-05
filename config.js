@@ -27,9 +27,8 @@ const CONFIG_BASE = {
   // ----------------------------------------------------------
   hero: {
     photo:          '',
-    heroImage:      'http://www.liujiani.net/assets/images/waves.png',
-    darkHeroImage:  'https://images.unsplash.com/photo-1544961371-516024f8e267',
-    bgImage:        'http://www.liujiani.net/assets/images/fernando-garcia-zuPXH2Nrzpg-unsplash.jpg',
+    heroImage:      'portfoio_assets/light_mode_hero.jpg',
+    darkHeroImage:  'portfoio_assets/dark_mode_hero.jpg',
     ctas: [
       { href: '#section-experience', style: 'primary'  },
       { href: 'http://www.liujiani.net/assets/Jiani_Liu_Web_Dev.pdf', style: 'outline', download: true },
@@ -112,8 +111,8 @@ const CONFIG_BASE = {
   // CONTACT
   // ----------------------------------------------------------
   contact: {
-    bgImage:         'http://www.liujiani.net/assets/images/fernando-garcia-zuPXH2Nrzpg-unsplash.jpg',
-    darkContactBgImage: 'https://images.unsplash.com/photo-1544961371-516024f8e267',
+    bgImage:         'portfoio_assets/light_mode_contact.jpg',
+    darkContactBgImage: 'portfoio_assets/dark_mode_contact.jpeg',
     links: [
       { href: 'mailto:jianiliu33@gmail.com',                      icon: 'email',    primary: true  },
       { href: 'https://www.linkedin.com/in/jiani-liu-547662192/', icon: 'linkedin', primary: false },

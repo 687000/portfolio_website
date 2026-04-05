@@ -7,3 +7,4 @@ deployment:
     - /bin/cp i18n.js $DEPLOYPATH
     - /bin/cp main.js $DEPLOYPATH
     - /bin/cp config.js $DEPLOYPATH
+    - /bin/cp -r portfoio_assets $DEPLOYPATH

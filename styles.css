@@ -216,11 +216,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   position: relative; overflow: hidden;
   min-height: 95vh; display: flex; align-items: center;
   padding: 0;
-  /* Shell edge — lower-right only, prominently wave-like */
-  border-radius: 0 0 clamp(80px, 11vw, 140px) 0;
 }
 
-/* View window — fixed background, slides open left→right on load, scrolls with section */
+/* View window — fixed background stays in place; curtain (::before on section) slides away */
 .hero__bg {
   position: absolute; inset: 0;
   /* Image declared via inline style in JS; fixed keeps it viewport-anchored while the section scrolls */
@@ -228,10 +226,19 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   background-position: center 40%;
   background-attachment: fixed;
   filter: saturate(0.82) brightness(1.02);
-  will-change: clip-path;
-  /* Shell curve on lower-right — the view-window edge — visible throughout the slide */
-  clip-path: inset(0 100% 0 0 round 0 0 88px 0);
-  animation: heroBgWipe 2.6s var(--ease) forwards;
+  /* Shell curve on lower-right */
+  border-radius: 0 0 88px 0;
+  /* No transform — background-attachment:fixed breaks inside a transformed element (Chrome) */
+}
+
+/* Curtain slides right to reveal the fixed background */
+.section--hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background: var(--bg);
+  pointer-events: none;
+  will-change: transform;
+  animation: heroCurtain 2.6s var(--ease) both;
 }
 .hero__bg--gradient {
   background: linear-gradient(148deg, var(--hero-start) 0%, var(--hero-end) 100%);
@@ -265,9 +272,10 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     0 0 80px rgba(35, 40, 38, 0.10),
     0 4px 24px rgba(35, 40, 38, 0.07);
   z-index: 2;
-  /* Shell curve on upper-right and lower-right via clip-path — animates the right edge expanding */
-  clip-path: inset(0 100% 0 0 round 0 88px 88px 0);
-  animation: heroPanelExpand 2.4s var(--ease) 0.18s forwards;
+  /* Shell curve on upper-right and lower-right */
+  border-radius: 0 88px 88px 0;
+  /* Fade+slide in — avoid large translateX with backdrop-filter (Chrome compositing bug) */
+  animation: heroPanelIn 1.2s var(--ease) 0.4s both;
 }
 
 /* Content drives the panel height */
@@ -313,9 +321,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .hero__social-link:hover { opacity: 0.75; transform: translateY(-1px); }
 .hero__social-icon {
   font-size: 12px; font-style: normal;
-  background: rgba(255,255,255,0.50);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.78);
   border: 1px solid rgba(255,255,255,0.60);
   border-radius: 8px; width: 40px; height: 40px;
   display: inline-flex; align-items: center; justify-content: center;
@@ -324,15 +330,15 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 /* Hero entrance keyframes */
-/* View window sweeps left → right; shell curve rides along the whole way */
-@keyframes heroBgWipe {
-  from { clip-path: inset(0 100% 0 0 round 0 0 88px 0); }
-  to   { clip-path: inset(0 0%   0 0 round 0 0 88px 0); }
+/* Curtain slides right → exposes the fixed background underneath */
+@keyframes heroCurtain {
+  from { transform: translateX(0); }
+  to   { transform: translateX(101%); }
 }
-/* Panel right edge sweeps left → right, shell curve visible throughout */
-@keyframes heroPanelExpand {
-  from { clip-path: inset(0 100% 0 0 round 0 88px 88px 0); }
-  to   { clip-path: inset(0 0%   0 0 round 0 88px 88px 0); }
+/* Panel fades + nudges in — small translateX avoids backdrop-filter compositing issues in Chrome */
+@keyframes heroPanelIn {
+  from { opacity: 0; transform: translateY(-50%) translateX(-28px); }
+  to   { opacity: 1; transform: translateY(-50%); }
 }
 @keyframes heroFadeIn {
   from { opacity: 0; }
@@ -342,6 +348,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 /* Scroll indicator */
 .hero__scroll {
   position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  z-index: 3; /* above the z-index:1 curtain */
   display: flex; flex-direction: column; align-items: center; gap: 6px;
   color: rgba(35,40,38,0.30); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
   animation: heroBounce 2.8s ease-in-out infinite;
@@ -682,16 +689,14 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   content: '';
   position: absolute; top: -20%; left: -8%;
   width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(143,211,204,0.08) 0%, transparent 62%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(143,211,204,0.12) 0%, transparent 62%);
   pointer-events: none;
 }
 .section--contact::after {
   content: '';
   position: absolute; bottom: -18%; right: -5%;
   width: 380px; height: 380px;
-  background: radial-gradient(circle, rgba(191,230,216,0.07) 0%, transparent 62%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(191,230,216,0.10) 0%, transparent 62%);
   pointer-events: none;
 }
 
@@ -823,8 +828,8 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-  .hero__bg { opacity: 1 !important; transform: none !important; }
-  .hero__panel { opacity: 1 !important; transform: none !important; }
+  /* Curtain snaps to `to` (translateX 101% = off-screen) via fill-mode:both — bg visible immediately */
+  /* Panel snaps to `to` (opacity:1, translateY(-50%)) — panel visible immediately */
   .project-card, .exp-card { opacity: 1 !important; transform: none !important; }
   .project-card.card-settled, .exp-card.card-settled { transition: none !important; }
   .experience__list::before { transform: scaleY(1) !important; }
@@ -862,6 +867,11 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   outline-offset: 2px;
 }
 
+/* Light mode cursor */
+body {
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="20" font-size="20">🏄‍♂️</text></svg>'), pointer;
+}
+
 /* ── DARK MODE — Galaxy / Deep Navy ──────────────────────────── */
 [data-theme="dark"] {
   --bg:          #070B18;
@@ -888,6 +898,10 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   --sh-sm: 0 4px 18px rgba(0,0,30,0.45);
   --sh-md: 0 12px 36px rgba(0,0,30,0.55);
   --sh-lg: 0 24px 60px rgba(0,0,30,0.65);
+}
+
+[data-theme="dark"] body {
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="20" font-size="20">💫</text></svg>'), pointer;
 }
 
 /* Dark overrides for hardcoded rgba values */
@@ -957,8 +971,8 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     0 8px 28px rgba(0,0,30,0.38);
 }
 [data-theme="dark"] .contact__glass {
-  background: rgba(100,140,255,0.05);
-  border-color: rgba(100,140,255,0.15);
+  background: rgba(100,140,255,0.12);
+  border-color: rgba(100,140,255,0.20);
 }
 [data-theme="dark"] .contact__heading { color: #CDD8F4; }
 [data-theme="dark"] .nav__link:hover { background: rgba(100,140,255,0.08); }
@@ -1066,14 +1080,13 @@ body, .nav, .hero__panel, .project-card, .exp-card,
   .hero__bg { background-attachment: scroll; }
   .section--contact { background-attachment: scroll; }
 
-  /* Hero panel flows in-document (no absolute/clip-path) on tablet & mobile */
+  /* Hero panel flows in-document on tablet & mobile */
   .section--hero { align-items: flex-start; border-radius: 0 0 clamp(44px, 10vw, 72px) 0; }
   .hero__panel {
     position: relative; width: 100%;
     transform: none;
-    clip-path: none;
     border-radius: 0 clamp(44px, 10vw, 72px) clamp(44px, 10vw, 72px) 0;
-    animation: heroFadeIn 0.9s var(--ease) 0.1s forwards;
+    animation: heroFadeIn 0.9s var(--ease) 0.1s both;
   }
   .hero__panel-content {
     padding: calc(var(--nav-h) + 40px) 48px 56px;
