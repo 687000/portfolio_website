@@ -3,8 +3,8 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/glsudr8uc6w5/public_html/
     - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp styles.css $DEPLOYPATH
     - /bin/cp i18n.js $DEPLOYPATH
     - /bin/cp main.js $DEPLOYPATH
     - /bin/cp config.js $DEPLOYPATH
     - /bin/cp -r portfoio_assets $DEPLOYPATH
+    - /bin/cp -r ui-lib $DEPLOYPATH
