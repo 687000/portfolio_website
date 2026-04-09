@@ -1,0 +1,84 @@
+/* ============================================================
+   UI-LIB — COMPONENTS
+   ============================================================ */
+
+
+/* ── 1. BUTTONS ──────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--sp-2); padding: 0 var(--sp-5); height: 44px;
+  font-family: var(--font-sans); font-size: var(--text-sm);
+  font-weight: var(--fw-semi); letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: var(--r-md); cursor: pointer; white-space: nowrap;
+  transition: background var(--t-base), border-color var(--t-base),
+              color var(--t-base), box-shadow var(--t-base), transform var(--t-fast);
+  user-select: none;
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.38; cursor: not-allowed; pointer-events: none; }
+
+.btn-primary   { background: var(--text-1); color: var(--text-inverse); border-color: var(--text-1); }
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: var(--shadow-md); }
+
+.btn-secondary { background: transparent; color: var(--text-1); border-color: var(--border-strong); }
+.btn-secondary:hover { background: var(--bg-hover); border-color: var(--accent); color: var(--accent-text); }
+
+.btn-sm  { height: 34px; padding: 0 var(--sp-3); font-size: var(--text-xs); }
+
+
+/* ── 2. NAVIGATION ───────────────────────────────────────── */
+.nav {
+  position: fixed; inset: 0 0 auto; z-index: var(--z-sticky);
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--t-base);
+}
+.nav.scrolled { box-shadow: 0 4px 24px rgba(46,107,86,0.08); }
+
+.nav-inner {
+  display: flex; align-items: center; gap: var(--sp-6);
+  max-width: 1160px; margin-inline: auto;
+  padding-inline: var(--sp-8); height: 64px;
+}
+
+.nav-logo { display: flex; align-items: center; gap: var(--sp-2); text-decoration: none; flex-shrink: 0; }
+
+.nav-links { display: flex; align-items: center; gap: var(--sp-1); flex: 1; padding-left: var(--sp-4); }
+.nav-link {
+  display: flex; align-items: center; gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-3); font-size: var(--text-sm); font-weight: var(--fw-medium);
+  color: var(--text-2); text-decoration: none; border-radius: var(--r-md);
+  transition: color var(--t-base), background var(--t-base); min-height: 36px;
+}
+.nav-link:hover { color: var(--text-1); background: var(--bg-hover); }
+.nav-link.active { color: var(--accent-text); background: var(--accent-muted); }
+
+.nav-actions { display: flex; align-items: center; gap: var(--sp-2); margin-left: auto; flex-shrink: 0; }
+
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; background: var(--bg-raised);
+  border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  cursor: pointer; padding: var(--sp-2); margin-left: var(--sp-2);
+}
+.nav-hamburger span { width: 100%; height: 1.5px; background: var(--text-1); border-radius: var(--r-full); transition: transform var(--t-base), opacity var(--t-base); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.nav-mobile {
+  display: none; position: fixed; top: 64px; inset: auto 0 0;
+  background: var(--bg-glass); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid var(--border); z-index: var(--z-overlay);
+  overflow-y: auto; padding: var(--sp-4); flex-direction: column;
+  transform: translateY(-100%); opacity: 0;
+  transition: transform var(--t-slow), opacity var(--t-slow);
+}
+.nav-mobile.open { transform: translateY(0); opacity: 1; }
+.nav-mobile-link { display: flex; align-items: center; padding: var(--sp-3); min-height: 44px; font-size: var(--text-base); font-weight: var(--fw-medium); color: var(--text-2); text-decoration: none; border-bottom: 1px solid var(--border); border-radius: var(--r-md); }
+.nav-mobile-link:hover { color: var(--text-1); background: var(--bg-hover); }
+.nav-mobile-actions { margin-top: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); }
+.nav-mobile-actions .btn { justify-content: center; width: 100%; }

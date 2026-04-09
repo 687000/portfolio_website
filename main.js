@@ -48,37 +48,29 @@ const RENDERERS = {};
 RENDERERS.nav = function (cfg) {
   const { initials, links, cta, logoImage } = cfg.nav;
   const { switchLang } = cfg.ui;
-  const navLinks = links.map(l => `<a href="${l.href}" class="nav__link">${l.label}</a>`).join('');
-  const mobileLinks = links.map(l => `<a href="${l.href}" class="nav__mobile-link">${l.label}</a>`).join('');
+  const navLinks = links.map(l => `<a href="${l.href}" class="nav-link">${l.label}</a>`).join('');
+  const mobileLinks = links.map(l => `<a href="${l.href}" class="nav-mobile-link">${l.label}</a>`).join('');
   return `
-    <nav class="nav" id="nav">
-      <div class="nav__outer">
-        <div class="nav__inner">
-          <a href="#" class="nav__logo-mark" aria-label="Home">
-            <img src="${logoImage}" alt="Jiani Liu" class="nav__logo-img" width="36" height="36">
-          </a>
-          <div class="nav__links">${navLinks}</div>
-          <div class="nav__actions">
-            <a href="${cta.href}" class="nav__cta">${cta.label}</a>
-          </div>
-          <div class="nav__actions">
-            <button type="button" class="nav__cta lang-switch-btn" aria-label="${switchLang === '中文' ? 'Switch to Chinese' : 'Switch to English'}">${switchLang}</button>
-          </div>
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="Home">
+          <img src="${logoImage}" alt="Jiani Liu" class="nav-logo-img" width="36" height="36">
+        </a>
+        <nav class="nav-links">${navLinks}</nav>
+        <div class="nav-actions">
+          <a href="${cta.href}" class="btn btn-primary btn-sm">${cta.label}</a>
+          <button type="button" class="btn btn-sm btn-secondary lang-switch-btn" aria-label="${switchLang === '中文' ? 'Switch to Chinese' : 'Switch to English'}">${switchLang}</button>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
         </div>
-        <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </nav>
-    <div class="nav__mobile-menu" id="nav-mobile" role="navigation">
+    <div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
       ${mobileLinks}
-      <div class="nav__mobile-cta">
-        <a href="${cta.href}" class="btn btn--primary" style="width:100%;justify-content:center">${cta.label}</a>
-      </div>
-      <div class="nav__mobile-cta">
-        <button type="button" class="btn btn--primary lang-switch-btn" style="width:100%;justify-content:center" aria-label="${switchLang === '中文' ? 'Switch to Chinese' : 'Switch to English'}">
-          ${switchLang}
-        </button>
+      <div class="nav-mobile-actions">
+        <a href="${cta.href}" class="btn btn-primary">${cta.label}</a>
+        <button type="button" class="btn btn-secondary lang-switch-btn" aria-label="${switchLang === '中文' ? 'Switch to Chinese' : 'Switch to English'}">${switchLang}</button>
       </div>
     </div>`;
 };
@@ -88,7 +80,7 @@ RENDERERS.hero = function (cfg) {
   const { greeting, name, title, tagline, ctas, social, heroImage, bgImage } = cfg.hero;
 
   const ctaBtns = ctas.map(c =>
-    `<a href="${c.href}" class="btn btn--${c.style === 'primary' ? 'primary' : 'outline-inv'}">${c.label}</a>`
+    `<a href="${c.href}" class="btn btn-${c.style === 'primary' ? 'primary' : 'secondary'}">${c.label}</a>`
   ).join('');
 
   // Icon-only pills — show all links including phone
@@ -324,7 +316,7 @@ function renderApp(language = 'en') {
   const CONFIG = getConfig(language);
 
   // WCAG 2.4.1: Skip link rendered first so keyboard users can bypass nav
-  let html = '<a href="#main-content" class="skip-link">Skip to main content</a>';
+  let html = '<a href="#main-content" class="skip-nav">Skip to main content</a>';
   html += RENDERERS.nav(CONFIG);
   html += '<main id="main-content">';
 
@@ -379,7 +371,7 @@ function initNav() {
     if (raf) return;
     raf = true;
     requestAnimationFrame(() => {
-      nav.classList.toggle('is-scrolled', window.scrollY > threshold);
+      nav.classList.toggle('scrolled', window.scrollY > threshold);
       raf = false;
     });
   };
@@ -387,20 +379,17 @@ function initNav() {
 
   // Mobile toggle
   if (!hamburger || !mobile) return;
-  const spans = hamburger.querySelectorAll('span');
 
   hamburger.addEventListener('click', () => {
-    const open = mobile.classList.toggle('is-open');
+    const open = mobile.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
     hamburger.setAttribute('aria-expanded', open);
-    spans[0].style.transform = open ? 'translateY(7px) rotate(45deg)'  : '';
-    spans[1].style.opacity   = open ? '0' : '';
-    spans[2].style.transform = open ? 'translateY(-7px) rotate(-45deg)' : '';
   });
 
   const closeMenu = () => {
-    mobile.classList.remove('is-open');
+    mobile.classList.remove('open');
+    hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
-    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
   };
 
   document.addEventListener('click', e => {
@@ -408,7 +397,7 @@ function initNav() {
   });
   // WCAG keyboard pattern: Escape closes the mobile menu
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && mobile.classList.contains('is-open')) closeMenu();
+    if (e.key === 'Escape' && mobile.classList.contains('open')) closeMenu();
   });
   mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 }
